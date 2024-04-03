@@ -2,23 +2,13 @@ import os
 from crewai import Agent, Task, Crew
 from langchain.chat_models.openai import ChatOpenAI
 
-os.environ["OPENAI_API_KEY"] = "" # Your OpenAI API key here
-os.environ["MODEL_NAME"] = "gpt-3.5-turbo"
-
-# Define Bob's personality traits
-class BobPersonality:
-    def __init__(self):
-        self.name = "Bob"
-        self.gender = "male"
-        self.humor_style = "witty and playful"
-        self.preferences = {
-            "favorite_jokes": ["puns", "wordplay", "sarcasm"],
-            "preferred_topics": ["technology", "movies", "food"],
-            "preferred_response_length": "short and witty"
-        }
-
-# Define Bob's personality based on traits
-bob_personality = BobPersonality()
+###################################
+# TO DO:
+#1. Add memory for next questions
+#2. Define better personality for Bob
+#3. Add another agent
+#4. fency printing
+###################################
 
 db = {
   "electric_vehicles": [
@@ -120,6 +110,25 @@ db = {
     }
   ]
 }
+
+os.environ["OPENAI_API_KEY"] = "" # Your OpenAI API key here
+os.environ["MODEL_NAME"] = "gpt-3.5-turbo"
+
+# Define Bob's personality traits
+class BobPersonality:
+    def __init__(self):
+        self.name = "Bob"
+        self.gender = "male"
+        self.humor_style = "witty and playful"
+        self.preferences = {
+            "favorite_jokes": ["puns", "wordplay", "sarcasm"],
+            "preferred_topics": ["technology", "movies", "food"],
+            "preferred_response_length": "short and witty"
+        }
+
+# Define Bob's personality based on traits
+bob_personality = BobPersonality()
+
 # Define Bob as an agent with a defined personality
 bob = Agent(
     role='Bot car sales assistant personality friend',
@@ -156,5 +165,5 @@ crew = Crew(
 # Get the crew to work
 result = crew.kickoff()
 
-print("######################")
-print(result)
+print("######################\n\n\n")
+print("Bob:  ", result)
