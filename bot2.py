@@ -1,9 +1,14 @@
 import os
+import json
 from crewai import Agent, Task, Crew
 from langchain.chat_models.openai import ChatOpenAI
 
 os.environ["OPENAI_API_KEY"] = "" # Your OpenAI API key here
 os.environ["MODEL_NAME"] = "gpt-3.5-turbo"
+
+# Load the database of cars
+with open("car_db.json", "r") as f:
+    db = json.load(f)
 
 # Define Bob's personality traits
 class BobPersonality:
@@ -20,106 +25,6 @@ class BobPersonality:
 # Define Bob's personality based on traits
 bob_personality = BobPersonality()
 
-db = {
-  "electric_vehicles": [
-    {
-      "brand": "Voltic Motors",
-      "model": "EcoCharge X",
-      "main_features": {
-        "battery_capacity_kWh": 90,
-        "range_miles": 300,
-        "acceleration_0_60_mph": 4.5,
-        "charging_time_hours": {
-          "fast_charge": 1.5,
-          "normal_charge": 8
-        },
-        "seating_capacity": 5
-      },
-      "price": 55000,
-      "applicable_offers": {
-        "federal_tax_credit": 7500,
-        "manufacturer_discount": 2000,
-        "trade_in_bonus": 1000
-      }
-    },
-    {
-      "brand": "ElectraDrive",
-      "model": "ThunderBolt S",
-      "main_features": {
-        "battery_capacity_kWh": 75,
-        "range_miles": 280,
-        "acceleration_0_60_mph": 4.8,
-        "charging_time_hours": {
-          "fast_charge": 2,
-          "normal_charge": 10
-        },
-        "seating_capacity": 4
-      },
-      "price": 60000,
-      "applicable_offers": {
-        "state_rebate": 3000,
-        "manufacturer_discount": 1500
-      }
-    },
-    {
-      "brand": "Zenith Motors",
-      "model": "ZenDrive Z5",
-      "main_features": {
-        "battery_capacity_kWh": 80,
-        "range_miles": 320,
-        "acceleration_0_60_mph": 5.2,
-        "charging_time_hours": {
-          "fast_charge": 2.5,
-          "normal_charge": 12
-        },
-        "seating_capacity": 5
-      },
-      "price": 58000,
-      "applicable_offers": {
-        "manufacturer_discount": 2500,
-        "loyalty_bonus": 750
-      }
-    },
-    {
-      "brand": "EcoMotion",
-      "model": "EcoSpark EV",
-      "main_features": {
-        "battery_capacity_kWh": 70,
-        "range_miles": 260,
-        "acceleration_0_60_mph": 5.5,
-        "charging_time_hours": {
-          "fast_charge": 2.5,
-          "normal_charge": 14
-        },
-        "seating_capacity": 5
-      },
-      "price": 52000,
-      "applicable_offers": {
-        "federal_tax_credit": 6500,
-        "trade_in_bonus": 1500
-      }
-    },
-    {
-      "brand": "NovaTech",
-      "model": "NovaPower EV",
-      "main_features": {
-        "battery_capacity_kWh": 85,
-        "range_miles": 300,
-        "acceleration_0_60_mph": 5.0,
-        "charging_time_hours": {
-          "fast_charge": 2,
-          "normal_charge": 11
-        },
-        "seating_capacity": 5
-      },
-      "price": 56000,
-      "applicable_offers": {
-        "state_rebate": 2000,
-        "manufacturer_discount": 1000
-      }
-    }
-  ]
-}
 # Define Bob as an agent with a defined personality
 bob = Agent(
     role='Bot car sales assistant personality friend',
