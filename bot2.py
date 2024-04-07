@@ -2,13 +2,15 @@ import os
 from crewai import Agent, Task, Crew, Process
 from langchain.chat_models.openai import ChatOpenAI
 import json
+from colorama import init, Fore, Back, Style # for Agent answares fancy printing
 
-###################################
-# TO DO:
+'''
+[
+# Optional TO DO:
 #2. Define better personality for Bob
 #3. Add another agent
-#4. fency printing
-###################################
+]
+'''
 
 # Define the database of electric vehicles
 file_path = "Project\AI_BotAssistent_Personality\data.json"
@@ -19,6 +21,9 @@ with open(file_path, "r") as file:
 os.environ["OPENAI_API_KEY"] = "" # Your OpenAI API key here
 os.environ["MODEL_NAME"] = "gpt-3.5-turbo"
 
+
+
+### Initialize the OpenAI chat model
 # Define Bob's personality traits
 class BobPersonality:
     def __init__(self):
@@ -36,7 +41,7 @@ bob_personality = BobPersonality()
 
 # Define Bob as an agent with a defined personality
 bob = Agent(
-    role='Bot car sales assistant personality friend',
+    role='Bot electric car sales assistant personality friend',
     goal='Answer user questions and help with chosing the best car to buy, with a big sense of humor.',
     backstory=f"""You are a {bob_personality.gender} named {bob_personality.name}.
     Your users are your friends, and you are always ready to help them with a big sense of humor.
@@ -52,12 +57,17 @@ bob = Agent(
     llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
 )
 
+
+# Initialize colorama
+init()
 # Initialize task for Bob
-text_task = input("\n\n\nHello, I am Bob. I'm here to help you find the perfect electric car! Let's get started with some fun and informative car shopping! So, do you prefer your car to be fast like a lightning bolt or have a range that goes on and on like a never-ending movie marathon? How can I help you today?\n")
+text_task = input(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\n\nHello, I am Bob. I'm here to help you find the perfect electric car! Let's get started with some fun and informative car shopping! So, do you prefer your car to be fast like a lightning bolt or have a range that goes on and on like a never-ending movie marathon? How can I help you today?\n" + Style.RESET_ALL)
 text_task = text_task + "Help user to find the best car for him. Answer user questions and help with tasks with a big sense of humor. Add curiosity and make fun of the user."
 
 
 
+
+### Start the conversation with Bob
 while text_task != "exit":
   # Define the task for Bob
   task1 = Task(
@@ -77,10 +87,11 @@ while text_task != "exit":
   # Get the crew to work
   result = crew.kickoff()
 
-  print("######################\n\n\n")
-  print("Bob:  ", result)
+  print("\n\n\n######################\n\n\n")
+  print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "Bob:  ", result)
+  print(Style.RESET_ALL)  # Reset to default style
 
   # prepare new task
-  text_task = input("\nBob: Is there something else I can do for you?\nOtherwise, if you want to exit, just type 'exit'.\n")
+  text_task = input(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\nBob: Is there something else I can do for you?\nOtherwise, if you want to exit, just type 'exit'.\n" + Style.RESET_ALL)
 
-print("\n\nBob: Goodbye! Have a great day! I hope you will buy form us instead of the asholes of Tesla!")
+print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: Goodbye! Have a great day! I hope you will buy form us instead of the asholes of Tesla!" + Style.RESET_ALL)

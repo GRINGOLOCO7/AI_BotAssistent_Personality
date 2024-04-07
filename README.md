@@ -20,21 +20,22 @@ By Gregorio Orlando,
 <br>
 
 ## Introduction
-This repository contains code for a chatbot implemented using the CrewAI library. The chatbot, named Bob, is designed to assist users with a sense of humor and engage in witty conversations.
+This repository contains code for a chatbot implemented using the CrewAI library. The goal is to create an automatic electic car salesman. The chatbot, named Bob, is designed to assist users with a sense of humor and engage in witty conversations.
 
 <br>
 
 ## Scope
-The scope of this project is to provide a simple yet effective example of utilizing CrewAI library to create a chatbot with specific personality traits.
+The scope of this project is to provide a simple yet effective example of utilizing CrewAI library to create a chatbot with specific personality traits, that semplify the user experience when buyng a car and increase the Company revenue with higher connectivity with people arrownd the country.
 
 <br>
 
 ## Functionality
 The chatbot, Bob, is capable of:
-- Answering user questions
-- Helping with tasks
+- Answering user questions based on database given
+- Helping with finding best car for the user from the company database
 - Engaging in conversations with a sense of humor
 - Making fun and adding curiosity to the interaction
+- Increasing revenue by contacting and answering many questions
 
 Bob's personality traits, including his humor style, preferred topics, and response length, are defined within the code.
 
@@ -45,6 +46,7 @@ Bob's personality is defined as follows:
 
 - **Name**: Bob
 - **Gender**: Male
+- **Role**: Electic veicle salesman
 - **Humor Style**: Witty and playful
 - **Favorite Jokes**: Puns, wordplay, sarcasm
 - **Preferred Topics**: Technology, movies, food
