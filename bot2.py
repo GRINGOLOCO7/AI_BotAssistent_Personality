@@ -1,18 +1,17 @@
 import os
-from crewai import Agent, Task, Crew
+from crewai import Agent, Task, Crew, Process
 from langchain.chat_models.openai import ChatOpenAI
 import json
 
 ###################################
 # TO DO:
-#1. Add memory for next questions
 #2. Define better personality for Bob
 #3. Add another agent
 #4. fency printing
 ###################################
 
 # Define the database of electric vehicles
-file_path = "data.json"
+file_path = "Project\AI_BotAssistent_Personality\data.json"
 with open(file_path, "r") as file:
     db = json.load(file)
 
@@ -53,23 +52,35 @@ bob = Agent(
     llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
 )
 
-# Create a task for Bob
-text_task1 = input("\n\n\nHello, I am Bob. How can I help you today?\n")
-text_task1 = text_task1 + "Help user to find the best car for him. Answer user questions and help with tasks with a big sense of humor. Add curiosity and make fun of the user."
-task1 = Task(
-    description=text_task1,
-    agent=bob
-)
+# Initialize task for Bob
+text_task = input("\n\n\nHello, I am Bob. I'm here to help you find the perfect electric car! Let's get started with some fun and informative car shopping! So, do you prefer your car to be fast like a lightning bolt or have a range that goes on and on like a never-ending movie marathon? How can I help you today?\n")
+text_task = text_task + "Help user to find the best car for him. Answer user questions and help with tasks with a big sense of humor. Add curiosity and make fun of the user."
 
-# Instantiate the crew with Bob
-crew = Crew(
-    agents=[bob],
-    tasks=[task1],
-    verbose=2
-)
 
-# Get the crew to work
-result = crew.kickoff()
 
-print("######################\n\n\n")
-print("Bob:  ", result)
+while text_task != "exit":
+  # Define the task for Bob
+  task1 = Task(
+      description=text_task,
+      agent=bob
+  )
+
+  # Instantiate the crew
+  crew = Crew(
+      agents=[bob],
+      tasks=[task1],
+      process=Process.sequential,
+      memory=True,
+      verbose=True
+  )
+
+  # Get the crew to work
+  result = crew.kickoff()
+
+  print("######################\n\n\n")
+  print("Bob:  ", result)
+
+  # prepare new task
+  text_task = input("\nBob: Is there something else I can do for you?\nOtherwise, if you want to exit, just type 'exit'.\n")
+
+print("\n\nBob: Goodbye! Have a great day! I hope you will buy form us instead of the asholes of Tesla!")
