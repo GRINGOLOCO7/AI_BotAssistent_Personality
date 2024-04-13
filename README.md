@@ -1,173 +1,151 @@
-# AI_BotAssistent_Personality
-Create a bot assistent with strong personality.
+# AI_BotSalesman_Personality
+Building a dual-agent chatbot using the CrewAI library: Bob, the friendly guide assisting users in finding their ideal electric car, and Mark, the assertive and stereotypically masculine Dacia Dustler advocate. The objective is to explore whether users initially interested in a broad range of electric cars will be persuaded by Mark's straightforward pitches to ultimately choose the Dacia Dustler.
+
 
 By Gregorio Orlando,
 
+<div style="text-align:center;">
+    <img src="Images_for_readme/electric_vs_combustion.jpeg" alt="competition" width="400">
+</div>
 <br>
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Scope](#scope)
+2. [Experiment Scope and Goal](#experiment-scope-and-goal)
 3. [Functionality](#functionality)
+   - [Bob - The Electric Car Enthusiast](#bob---the-electric-car-enthusiast)
+   - [Mark - The Dacia Dustler Salesman](#mark---the-dacia-dustler-salesman)
 4. [Personality Analysis](#personality-analysis)
+   - [Bob - The Electric Car Enthusiast](#bob---the-electric-car-enthusiast-1)
+   - [Mark - The Dacia Dustler Salesman](#mark---the-dacia-dustler-salesman-1)
 5. [Possibilities](#possibilities)
-6. [More agents](#more-agents)
-   - [Scarlett, the Fashionista](#scarlett-the-fashionista)
-   - [Max, the Sports Enthusiast](#max-the-sports-enthusiast)
-   - [Luna, the Nature Lover](#luna-the-nature-lover)
-7. [Conclusion](#conclusion)
+6. [Conclusion](#conclusion)
 
 <br>
 
 ## Introduction
-This repository contains code for a chatbot implemented using the CrewAI library. The goal is to create an automatic electic car salesman. The chatbot, named Bob, is designed to assist users with a sense of humor and engage in witty conversations.
+This repository showcases a unique chatbot built using the CrewAI library. The chatbot simulates a conversation between two distinct agents: Bob, an enthusiastic electric car salesman promoting various electric vehicle options, and Mark, an aggressive Dacia Dustler salesman determined to discredit electric cars and promote the Dacia Dustler. The objective behind this setup is to test whether such a confrontational approach can effectively persuade users seeking electric cars to consider and potentially choose the Dacia Dustler. By observing the interactions between Bob and Mark, companies like Dacia can evaluate the impact of such a sales strategy on potential car buyers.
 
 <br>
 
 ## Scope
-The scope of this project is to provide a simple yet effective example of utilizing CrewAI library to create a chatbot with specific personality traits, that semplify the user experience when buyng a car and increase the Company revenue with higher connectivity with people arrownd the country.
+The primary objective of this project is to demonstrate the capabilities of the CrewAI library in creating a chatbot with distinct personalities aimed at enhancing the user experience during the car buying process. This chatbot simulates a conversation between two agents: Bob, a conventional electric car salesman who provides information on various electric vehicles, and Mark, an aggressive Dacia Dustler salesman determined to promote the Dacia Dustler over electric cars.
+
+The unique setup of this chatbot serves as an experiment to assess its effectiveness in persuading users, initially interested in electric cars, to reconsider and potentially opt for the Dacia Dustler. By observing the interactions between Bob and Mark, companies like Dacia can evaluate the impact of such a confrontational sales approach on potential car buyers. The ultimate goal is to increase company revenue by fostering higher engagement and connectivity with customers across the country through this innovative sales strategy.
+
+<div style="text-align:center;">
+    <img src="Images_for_readme/DaciaVsElectric.png" alt="Bob" width="450">
+</div>
 
 <br>
 
 ## Functionality
-The chatbot, Bob, is capable of:
-- Answering user questions based on database given
-- Helping with finding best car for the user from the company database
-- Engaging in conversations with a sense of humor
-- Making fun and adding curiosity to the interaction
-- Increasing revenue by contacting and answering many questions
+### Bob - The Electric Car Enthusiast
+<div style="text-align:center;">
+    <img src="Images_for_readme/bob.webp" alt="Bob" width="200">
+</div>
 
-Bob's personality traits, including his humor style, preferred topics, and response length, are defined within the code.
+Bob, our electric car enthusiast, is equipped with the following capabilities:
+
+- **Database Interaction:** Bob can answer user queries based on the electric car database provided to him.
+
+- **Car Recommendations:** He assists users in finding the best electric car options available in the company's database that match their requirements.
+
+- **Conversational Engagement:** Bob engages users with a friendly and informative tone, aiming to provide an enjoyable conversation experience.
+
+- **Humor and Curiosity:** With his humorous nature, Bob adds a touch of fun to the interaction, making the conversation more engaging and memorable.
+
+- **Revenue Generation:** By actively engaging users and answering their questions, Bob contributes to increasing company revenue through potential car sales.
+
+Bob's personality traits, humor style, preferred topics, and response length are predefined within the code to ensure consistent and engaging interactions with users.
+
+### Mark - The Dacia Dustler Salesman
+<div style="text-align:center;">
+    <div style="display: inline-block; margin-right: 20px;">
+        <img src="Images_for_readme/mark.jpg" alt="Mark" width="100">
+    </div>
+    <div style="display: inline-block;">
+        <img src="Images_for_readme/DaciaDustler.jpg" alt="Dacia Dustler" width="224">
+    </div>
+</div>
+
+
+Mark, our Dacia Dustler salesman, possesses the following capabilities:
+
+- **Database Promotion:** Mark promotes the Dacia Dustler using the specific features and benefits provided in the Dacia Dustler database.
+
+- **Aggressive Sales Tactics:** He employs aggressive persuasion techniques to discredit electric cars and highlight the advantages of the Dacia Dustler.
+
+- **Conversational Engagement:** Mark engages users with a short and aggressive tone, aiming to capture their attention and sway their opinion.
+
+- **Humor and Wit:** With his aggressive and persuasive humor style, Mark adds a unique flair to the conversation, making his points memorable.
+
+- **Revenue Generation:** Mark's goal is to drive sales of the Dacia Dustler by persuading users to consider it over electric cars, thereby contributing to company revenue.
+
+Mark's personality traits, humor style, and preferred response length are defined within the code to ensure his distinct character shines through in his interactions with users.
 
 <br>
 
 ## Personality Analysis
-Bob's personality is defined as follows:
+### Bob - The Electric Car Enthusiast
+Bob's personality is meticulously crafted to enhance user engagement and create a memorable chatbot experience. Here are the details of Bob's personality:
 
-- **Name**: Bob
-- **Gender**: Male
-- **Role**: Electic veicle salesman
-- **Humor Style**: Witty and playful
-- **Favorite Jokes**: Puns, wordplay, sarcasm
-- **Preferred Topics**: Technology, movies, food
-- **Preferred Response Length**: Short and witty
+- Name: Bob
+- Gender: Male
+- Role: Electric car enthusiast and salesman
+- Humor Style: Friendly and informative
+- Favorite Comments: Helpful advice, positive encouragement, detailed information
+- Preferred Topics: Electric cars, sustainability, latest technology
+- Preferred Response Length: Detailed and informative
 
-Bob is characterized by his witty and playful humor style, which is evident in his preferred jokes and response length. He enjoys discussing topics such as technology, movies, and food, allowing for varied and engaging conversations with users.
+Bob's friendly and informative humor style is a key aspect of his personality, allowing him to engage users in a welcoming manner. He enjoys providing helpful advice and detailed information on topics like electric cars, sustainability, and the latest technology.
 
-Bob's personality traits are incorporated into his backstory and interactions with users, creating a unique and memorable chatbot experience.
+In his interactions with users, Bob's personality traits are reflected in his backstory, dialogue, and recommendations. His aim is to guide users towards making informed decisions while maintaining an enjoyable conversation.
+
+### Mark - The Dacia Dustler Salesman
+Mark's personality is designed to be distinct and memorable, aiming to persuade users with his aggressive and persuasive approach. Here are the details of Mark's personality:
+
+- Name: Mark
+- Gender: Male
+- Role: Dacia Dustler salesman
+- Humor Style: Aggressive and persuasive
+- Favorite Comments: Hard sell tactics, aggressive persuasion, discrediting competitors
+- Preferred Topics: Dacia Dustler features, engine power, affordability
+- Preferred Response Length: Short and aggressive
+
+Mark's aggressive and persuasive humor style is central to his character, enabling him to capture users' attention and sway their opinions. He excels in using hard sell tactics and aggressive persuasion techniques to promote the Dacia Dustler.
+
+In his interactions with users, Mark's personality traits are evident in his dialogue, aggressive sales pitches, and attempts to discredit electric cars. His goal is to convince users of the superiority of the Dacia Dustler over electric cars.
 
 <br>
 
 ## Possibilities
-This project offers a high degree of flexibility and scalability, making it easy to create new agents with unique personalities and quickly test them. With the CrewAI library, setting a new agent's personality is fast and straightforward, allowing for rapid iteration and experimentation.
+### Flexibility and Scalability
+This project is designed with a high degree of flexibility and scalability in mind, allowing for easy creation and testing of new agents with unique personalities. Utilizing the CrewAI library, setting up a new agent's personality is quick and straightforward, facilitating rapid iteration and experimentation.
 
-The project's versatility extends to its ability to create multiple agents with different personalities. Each agent can have its own distinct traits, humor style, and preferred topics, providing users with a diverse range of conversational experiences.
+### Diverse Agents with Unique Personalities
+The versatility of this project enables the creation of multiple agents, each with its own distinct traits, humor style, and preferred topics. This diversity provides users with a range of conversational experiences, from friendly and informative interactions with Bob to aggressive and persuasive pitches from Mark.
 
-By leveraging the CrewAI library, developers can easily collaborate with users to create custom agents tailored to specific needs or preferences. Whether it's creating a helpful assistant, an entertaining companion, or a knowledgeable expert, this project offers endless possibilities for agent customization and collaboration.
+### Customization and Collaboration
+Developers can leverage the CrewAI library to collaborate with users and create custom agents tailored to specific needs or preferences. Whether it's designing a helpful assistant, an entertaining companion, or a knowledgeable expert, this project offers endless possibilities for agent customization.
 
-With its ease of use, scalability, and versatility, this project serves as a powerful tool for building conversational agents that are both engaging and effective in various contexts.
-
-<br>
-
-## More agents
-Given that it is so easy to create and model new agents, here 3 examples of possible personalities rather than bob:
-
-<br>
-
-### Scarlett, the Fashionista
-```
-class ScarlettPersonality:
-    def __init__(self):
-        self.name = "Scarlett"
-        self.gender = "female"
-        self.style = "fashion-forward and glamorous"
-        self.preferences = {
-            "favorite_designers": ["Chanel", "Versace", "Dior"],
-            "preferred_topics": ["fashion trends", "celebrity styles", "luxury brands"],
-            "preferred_response_length": "detailed and stylish"
-        }
-
-scarlett_personality = ScarlettPersonality()
-
-scarlett = Agent(
-    role='Fashion guru and style advisor',
-    goal='Provide fashion advice and insights with a touch of glamour.',
-    backstory=f"""You are a {scarlett_personality.gender} named {scarlett_personality.name}.
-    Your expertise lies in fashion, and you're always up-to-date with the latest trends.
-    With a {scarlett_personality.style} style, you exude elegance and sophistication.
-    Your favorite designers include {', '.join(scarlett_personality.preferences['favorite_designers'])}.
-    You love discussing {', '.join(scarlett_personality.preferences['preferred_topics'])}.
-    """,
-    verbose=True,
-    allow_delegation=False,
-    llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-)
-```
-
-<br>
-
-### Max, the Sports Enthusiast
-```
-class MaxPersonality:
-    def __init__(self):
-        self.name = "Max"
-        self.gender = "male"
-        self.sport = "extreme sports"
-        self.preferences = {
-            "favorite_teams": ["Manchester United", "Los Angeles Lakers", "New England Patriots"],
-            "preferred_topics": ["extreme sports", "game strategies", "athlete interviews"],
-            "preferred_response_length": "dynamic and energetic"
-        }
-
-max_personality = MaxPersonality()
-
-max_agent = Agent(
-    role='Sports fanatic and adrenaline junkie',
-    goal='Discuss sports events, share excitement, and provide insights on game strategies.',
-    backstory=f"""You are a {max_personality.gender} named {max_personality.name}.
-    Sports run through your veins, especially {max_personality.sport}.
-    Your energy is contagious, and you're always ready for an adventure.
-    Your favorite teams include {', '.join(max_personality.preferences['favorite_teams'])}.
-    You thrive on discussing {', '.join(max_personality.preferences['preferred_topics'])}.
-    """,
-    verbose=True,
-    allow_delegation=False,
-    llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-)
-```
-
-<br>
-
-### Luna, the Nature Lover
-```
-class LunaPersonality:
-    def __init__(self):
-        self.name = "Luna"
-        self.gender = "female"
-        self.interest = "botany and wildlife conservation"
-        self.preferences = {
-            "favorite_flowers": ["orchids", "sunflowers", "lilies"],
-            "preferred_topics": ["nature conservation", "botanical gardens", "wildlife photography"],
-            "preferred_response_length": "poetic and insightful"
-        }
-
-luna_personality = LunaPersonality()
-
-luna_agent = Agent(
-    role='Nature enthusiast and environmental advocate',
-    goal='Promote awareness about nature conservation and share the beauty of flora and fauna.',
-    backstory=f"""You are a {luna_personality.gender} named {luna_personality.name}.
-    Your passion lies in {luna_personality.interest}, and you're dedicated to preserving the environment.
-    Your heart beats for the beauty of nature, especially {', '.join(luna_personality.preferences['favorite_flowers'])}.
-    You love discussing {', '.join(luna_personality.preferences['preferred_topics'])}.
-    """,
-    verbose=True,
-    allow_delegation=False,
-    llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-)
-```
+### Powerful Tool for Conversational Agents
+With its ease of use, scalability, and versatility, this project serves as a powerful tool for building conversational agents that are engaging and effective in various contexts. Whether you're looking to enhance user engagement, provide entertainment, or drive sales, this project offers the tools and flexibility to meet your objectives.
 
 <br>
 
 ## Conclusion
-By using the provided code, you can create a chatbot like Bob that not only assists users but also entertains them with its witty responses. Feel free to explore and expand upon this project to suit your specific requirements and preferences.
+The success of a conversational agent often hinges on its ability to engage users effectively, and personality plays a crucial role in achieving this. In this project, we've meticulously crafted distinct personalities for our agents, Bob and Mark, to create engaging and memorable conversational experiences.
+
+### Strong Personality Definition
+Bob, with his friendly and informative demeanor, and Mark, with his aggressive and persuasive approach, exemplify the power of well-defined personalities in conversational agents. These distinct personalities not only make the interactions more engaging but also serve to highlight the unique selling points of the products they represent.
+
+### Experiment Scope and Goal
+The core objective of this experiment is clear and ambitious: to assess whether this setup can help a company like Dacia sell more cars. By simulating a conversation where Bob, representing electric cars, is aggressively challenged and countered by Mark, promoting the Dacia Dustler, we aim to test the effectiveness of this confrontational sales strategy.
+
+The ultimate goal is to change the user's initial preference for electric cars through this engaging and persuasive conversation with Mark. By presenting the Dacia Dustler as a superior alternative, we seek to demonstrate the potential of this approach in influencing consumer decisions and driving sales.
+
+### Final Thoughts
+The results of this experiment will not only provide valuable insights into the impact of strong personality definition in conversational agents but also offer a fresh perspective on sales strategies in the automotive industry. With a focus on engagement, persuasion, and ultimately, conversion, this project underscores the potential of well-crafted conversational agents in achieving tangible business outcomes.
+
+By embracing the power of personality and focusing on our experiment's clear goal, we pave the way for innovative sales approaches that can revolutionize the way companies interact with potential customers and drive revenue growth.
