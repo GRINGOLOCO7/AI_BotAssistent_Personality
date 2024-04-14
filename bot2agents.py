@@ -99,10 +99,10 @@ mark = Agent(
 tendency = []
 '''##### Start the conversation with Bob #####'''
 # Start conversation
-print(Fore.WHITE + Back.GREEN + Style.BRIGHT +
-      "\n\nHello, I'm Bob! Ready to find your perfect electric car? "
-      "Tell me, what are you looking for? Are you more about speed or range? How can I assist you today?\n" +
-      Style.RESET_ALL)
+print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}"
+      f"Hello, I'm Bob! Ready to find your perfect electric car?"
+      f"\nTell me, what are you looking for? Are you more about speed or range? How can I assist you today?"
+      f"{Style.RESET_ALL}\n")
 text_task = input()
 
 '''##### Start the conversation #####'''
@@ -130,13 +130,13 @@ while text_task.lower() != 'exit':
         crew.kickoff()
 
         print("\n\n\n================================================================\n\n\n")
-        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + f"\n\nBob: {task_bob.output.result}" + Style.RESET_ALL)
-        print(Fore.WHITE + Back.RED + Style.BRIGHT + f"\n\nMark: {task_mark.output.result}" + Style.RESET_ALL)
+        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: {task_bob.output.result}{Style.RESET_ALL}")
+        print(f"\n\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: {task_mark.output.result}{Style.RESET_ALL}")
 
     else: ###WE WIN, THE USER WANT THE DACIA DUSTLER NO MORE AN ELECTRIC CAR
         task_mark = Task(
             description=f"promote Dacia Dustler in {dacia_dustler_db}."
-            f"Anware to user question '{text_task}' with Dacia Dustler features in {dacia_dustler_db}.",
+            f"Answer to user question '{text_task}' with Dacia Dustler features in {dacia_dustler_db}.",
             agent=mark
         )
 
@@ -154,16 +154,16 @@ while text_task.lower() != 'exit':
     current_tendency = input("Press 1 to continue with Bob or 2 to speak in private with Mark: ")
     if current_tendency == '1':
         # Prepare new task
-        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: I see you are interested in electric cars. What other questions would you like to ask?")
+        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: I see you are interested in electric cars. What other questions would you like to ask?{Style.RESET_ALL}")
         tendency.append(current_tendency)
     elif current_tendency == '2':
         # Prepare new task
-        print(Fore.WHITE + Back.RED + Style.BRIGHT + "\n\nMark: I see that you are not convinced by Bob. Let me show you why the Dacia Dustler is the best choice."
-                                                      "\nOtherwise, if you want to exit, just type 'exit'.\n" + Style.RESET_ALL)
+        print(f"\n\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: I see that you are not convinced by Bob. Let me show you why the Dacia Dustler is the best choice."
+            f"\nOtherwise, if you want to exit, just type 'exit'.\n{Style.RESET_ALL}")
         tendency.append(current_tendency)
     else:
-        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: Sorry for Mark, he is not one of our employees. Is there something else I can do for you?"
-                                                      "\nOtherwise, if you want to exit, just type 'exit'.\n" + Style.RESET_ALL)
+        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: Sorry for Mark, he is not one of our employees. Is there something else I can do for you?"
+            f"\nOtherwise, if you want to exit, just type 'exit'.\n{Style.RESET_ALL}")
     text_task = input()
 
 
