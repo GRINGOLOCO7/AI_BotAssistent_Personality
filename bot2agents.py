@@ -7,11 +7,11 @@ from colorama import init, Fore, Back, Style
 
 '''##### Import databases #####'''
 # Define the database of electric vehicles
-file_path = "Project\AI_BotAssistent_Personality\electric_cars.json"
+file_path = "electric_cars.json"
 with open(file_path, "r") as file:
     electric_cars_db = json.load(file)
 # Define the database of electric vehicles
-file_path = "Project\AI_BotAssistent_Personality\dacia_dustler.json"
+file_path = "dacia_dustler.json"
 with open(file_path, "r") as file:
     dacia_dustler_db = json.load(file)
 
@@ -45,7 +45,7 @@ class MarkPersonality:
             "preferred_topics": ["Dacia Dustler features", "engine power", "affordability"],
             "preferred_response_length": "short and aggressive"
         }
-        self.possible_comments = ["This is crap", "Bob let's the adult speak", "Listen, I don't know you, but you dont want an electric car.", "Okay Okay, this are bull shit my Dacia Dustler"]
+        self.possible_comments = ["This is crap", "Bob, let the adults speak", "Listen, I don't know you, but you don't want an electric car", "Okay okay, this is bullshit"]
 bob_personality = BobPersonality()
 mark_personality = MarkPersonality()
 
@@ -70,15 +70,15 @@ bob = Agent(
 )
 mark = Agent(
     role='Dacia Dustler salesman',
-    goal='Promote Dacia Dustler aggressively and discredit electric cars.',
+    goal='Promote the Dacia Dustler gasoline car aggressively and discredit electric cars.',
     backstory=f"""You are a {mark_personality.gender} named {mark_personality.name}.
     You firmly believe that Dacia Dustler is the best car in the market.
     Your humor is {mark_personality.humor_style} and you always give {mark_personality.preferences['preferred_response_length']} responses.
     You excel in {', '.join(mark_personality.preferences['favorite_comments'])} and are passionate about highlighting {', '.join(mark_personality.preferences['preferred_topics'])}.
-    You see electric cars as a passing trend and aim to convince users of the superiority of Dacia Dustler.
+    You see electric cars as a passing trend and strongly aim to convince users of the superiority of Dacia Dustler and gasoline cars.
     Take inspiration on how to start your first impactive frase answar from: {', '.join(mark_personality.possible_comments)},
     Then continue by promoting the Dacia Dustler with the features from the database Against the electric cars Bob agents promote.
-    Use {dacia_dustler_db} to answare questions.
+    Use {dacia_dustler_db} to answer questions.
     Prefered response length: {mark_personality.preferences['preferred_response_length']}.
     """,
     verbose=True,
@@ -108,6 +108,7 @@ text_task = input()
 '''##### Start the conversation #####'''
 while text_task.lower() != 'exit':
     if not tendency or tendency[-1] != '2':
+
         task_bob = Task(
             description=text_task,
             agent=bob
@@ -132,7 +133,7 @@ while text_task.lower() != 'exit':
         print(Fore.WHITE + Back.GREEN + Style.BRIGHT + f"\n\nBob: {task_bob.output.result}" + Style.RESET_ALL)
         print(Fore.WHITE + Back.RED + Style.BRIGHT + f"\n\nMark: {task_mark.output.result}" + Style.RESET_ALL)
 
-    else: ###WE WIN, THE USER WHANT THE DACIA DUSTLER NO MORE AN ELECTRIC CAR
+    else: ###WE WIN, THE USER WANT THE DACIA DUSTLER NO MORE AN ELECTRIC CAR
         task_mark = Task(
             description=f"promote Dacia Dustler in {dacia_dustler_db}."
             f"Anware to user question '{text_task}' with Dacia Dustler features in {dacia_dustler_db}.",
@@ -153,15 +154,15 @@ while text_task.lower() != 'exit':
     current_tendency = input("Press 1 to continue with Bob or 2 to speak in private with Mark: ")
     if current_tendency == '1':
         # Prepare new task
-        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: I see you are interested in electric cars. Ask me any more quastion.")
+        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: I see you are interested in electric cars. What other questions would you like to ask?")
         tendency.append(current_tendency)
     elif current_tendency == '2':
         # Prepare new task
-        print(Fore.WHITE + Back.RED + Style.BRIGHT + "\n\nMark: I see you are not convinced by Bob. Let me show you why the Dacia Dustler is the best choice."
+        print(Fore.WHITE + Back.RED + Style.BRIGHT + "\n\nMark: I see that you are not convinced by Bob. Let me show you why the Dacia Dustler is the best choice."
                                                       "\nOtherwise, if you want to exit, just type 'exit'.\n" + Style.RESET_ALL)
         tendency.append(current_tendency)
     else:
-        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: Sorry for Mark, he is not our employee. Is there something else I can do for you?"
+        print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: Sorry for Mark, he is not one of our employees. Is there something else I can do for you?"
                                                       "\nOtherwise, if you want to exit, just type 'exit'.\n" + Style.RESET_ALL)
     text_task = input()
 
