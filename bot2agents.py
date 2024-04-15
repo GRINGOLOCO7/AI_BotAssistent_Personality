@@ -1,8 +1,7 @@
 import os
+import json
 from crewai import Agent, Task, Crew, Process
 from langchain.chat_models.openai import ChatOpenAI
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import json
 from colorama import init, Fore, Back, Style
 
 
