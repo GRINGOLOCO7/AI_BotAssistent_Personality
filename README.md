@@ -1,8 +1,8 @@
 # AI_BotSalesman_Personality
-Building a dual-agent chatbot using the CrewAI library: Bob, the friendly guide assisting users in finding their ideal electric car, and Mark, the assertive and stereotypically masculine Dacia Dustler advocate. The objective is to explore whether users initially interested in a broad range of electric cars will be persuaded by Mark's straightforward pitches to ultimately choose the Dacia Dustler.
+Building a dual-agent chatbot using the CrewAI library: Bob, the friendly guide assisting users in finding their ideal electric car, and Mark, the assertive and stereotypically masculine Dacia Duster advocate. The objective is to explore whether users initially interested in a broad range of electric cars will be persuaded by Mark's straightforward pitches to ultimately choose the Dacia Duster.
 
 
-By Gregorio Orlando,
+By [Gregorio Orlando](https://github.com/GRINGOLOCO7), [Tomás Mesalles](https://github.com/Torkuno), and Daniel Mora
 
 <div style="text-align:center;">
     <img src="Images_for_readme/electric_vs_combustion.jpeg" alt="competition" width="400">
@@ -14,24 +14,24 @@ By Gregorio Orlando,
 2. [Experiment Scope and Goal](#experiment-scope-and-goal)
 3. [Functionality](#functionality)
    - [Bob - The Electric Car Enthusiast](#bob---the-electric-car-enthusiast)
-   - [Mark - The Dacia Dustler Salesman](#mark---the-dacia-dustler-salesman)
+   - [Mark - The Dacia Duster Salesman](#mark---the-dacia-duster-salesman)
 4. [Personality Analysis](#personality-analysis)
    - [Bob - The Electric Car Enthusiast](#bob---the-electric-car-enthusiast-1)
-   - [Mark - The Dacia Dustler Salesman](#mark---the-dacia-dustler-salesman-1)
+   - [Mark - The Dacia Duster Salesman](#mark---the-dacia-duster-salesman-1)
 5. [Possibilities](#possibilities)
 6. [Conclusion](#conclusion)
 
 <br>
 
 ## Introduction
-This repository showcases a unique chatbot built using the CrewAI library. The chatbot simulates a conversation between two distinct agents: Bob, an enthusiastic electric car salesman promoting various electric vehicle options, and Mark, an aggressive Dacia Dustler salesman determined to discredit electric cars and promote the Dacia Dustler. The objective behind this setup is to test whether such a confrontational approach can effectively persuade users seeking electric cars to consider and potentially choose the Dacia Dustler. By observing the interactions between Bob and Mark, companies like Dacia can evaluate the impact of such a sales strategy on potential car buyers.
+This repository showcases a unique chatbot built using the CrewAI library. The chatbot simulates a conversation between two distinct agents: Bob, an enthusiastic electric car salesman promoting various electric vehicle options, and Mark, an aggressive Dacia Duster salesman determined to discredit electric cars and promote the Dacia Duster. The objective behind this setup is to test whether such a confrontational approach can effectively persuade users seeking electric cars to consider and potentially choose the Dacia Duster. By observing the interactions between Bob and Mark, companies like Dacia can evaluate the impact of such a sales strategy on potential car buyers.
 
 <br>
 
 ## Scope
-The primary objective of this project is to demonstrate the capabilities of the CrewAI library in creating a chatbot with distinct personalities aimed at enhancing the user experience during the car buying process. This chatbot simulates a conversation between two agents: Bob, a conventional electric car salesman who provides information on various electric vehicles, and Mark, an aggressive Dacia Dustler salesman determined to promote the Dacia Dustler over electric cars.
+The primary objective of this project is to demonstrate the capabilities of the CrewAI library in creating a chatbot with distinct personalities aimed at enhancing the user experience during the car buying process. This chatbot simulates a conversation between two agents: Bob, a conventional electric car salesman who provides information on various electric vehicles, and Mark, an aggressive Dacia Duster salesman determined to promote the Dacia Duster over electric cars.
 
-The unique setup of this chatbot serves as an experiment to assess its effectiveness in persuading users, initially interested in electric cars, to reconsider and potentially opt for the Dacia Dustler. By observing the interactions between Bob and Mark, companies like Dacia can evaluate the impact of such a confrontational sales approach on potential car buyers. The ultimate goal is to increase company revenue by fostering higher engagement and connectivity with customers across the country through this innovative sales strategy.
+The unique setup of this chatbot serves as an experiment to assess its effectiveness in persuading users, initially interested in electric cars, to reconsider and potentially opt for the Dacia Duster. By observing the interactions between Bob and Mark, companies like Dacia can evaluate the impact of such a confrontational sales approach on potential car buyers. The ultimate goal is to increase company revenue by fostering higher engagement and connectivity with customers across the country through this innovative sales strategy.
 
 <div style="text-align:center;">
     <img src="Images_for_readme/DaciaVsElectric.png" alt="Bob" width="450">
@@ -59,28 +59,28 @@ Bob, our electric car enthusiast, is equipped with the following capabilities:
 
 Bob's personality traits, humor style, preferred topics, and response length are predefined within the code to ensure consistent and engaging interactions with users.
 
-### Mark - The Dacia Dustler Salesman
+### Mark - The Dacia Duster Salesman
 <div style="text-align:center;">
     <div style="display: inline-block; margin-right: 20px;">
         <img src="Images_for_readme/mark.jpg" alt="Mark" width="100">
     </div>
     <div style="display: inline-block;">
-        <img src="Images_for_readme/DaciaDustler.jpg" alt="Dacia Dustler" width="224">
+        <img src="Images_for_readme/DaciaDuster.jpg" alt="Dacia Duster" width="224">
     </div>
 </div>
 
 
-Mark, our Dacia Dustler salesman, possesses the following capabilities:
+Mark, our Dacia Duster salesman, possesses the following capabilities:
 
-- **Database Promotion:** Mark promotes the Dacia Dustler using the specific features and benefits provided in the Dacia Dustler database.
+- **Database Promotion:** Mark promotes the Dacia Duster using the specific features and benefits provided in the Dacia Duster database.
 
-- **Aggressive Sales Tactics:** He employs aggressive persuasion techniques to discredit electric cars and highlight the advantages of the Dacia Dustler.
+- **Aggressive Sales Tactics:** He employs aggressive persuasion techniques to discredit electric cars and highlight the advantages of the Dacia Duster.
 
 - **Conversational Engagement:** Mark engages users with a short and aggressive tone, aiming to capture their attention and sway their opinion.
 
 - **Humor and Wit:** With his aggressive and persuasive humor style, Mark adds a unique flair to the conversation, making his points memorable.
 
-- **Revenue Generation:** Mark's goal is to drive sales of the Dacia Dustler by persuading users to consider it over electric cars, thereby contributing to company revenue.
+- **Revenue Generation:** Mark's goal is to drive sales of the Dacia Duster by persuading users to consider it over electric cars, thereby contributing to company revenue.
 
 Mark's personality traits, humor style, and preferred response length are defined within the code to ensure his distinct character shines through in his interactions with users.
 
@@ -102,20 +102,20 @@ Bob's friendly and informative humor style is a key aspect of his personality, a
 
 In his interactions with users, Bob's personality traits are reflected in his backstory, dialogue, and recommendations. His aim is to guide users towards making informed decisions while maintaining an enjoyable conversation.
 
-### Mark - The Dacia Dustler Salesman
+### Mark - The Dacia Duster Salesman
 Mark's personality is designed to be distinct and memorable, aiming to persuade users with his aggressive and persuasive approach. Here are the details of Mark's personality:
 
 - Name: Mark
 - Gender: Male
-- Role: Dacia Dustler salesman
+- Role: Dacia Duster salesman
 - Humor Style: Aggressive and persuasive
 - Favorite Comments: Hard sell tactics, aggressive persuasion, discrediting competitors
-- Preferred Topics: Dacia Dustler features, engine power, affordability
+- Preferred Topics: Dacia Duster features, engine power, affordability
 - Preferred Response Length: Short and aggressive
 
-Mark's aggressive and persuasive humor style is central to his character, enabling him to capture users' attention and sway their opinions. He excels in using hard sell tactics and aggressive persuasion techniques to promote the Dacia Dustler.
+Mark's aggressive and persuasive humor style is central to his character, enabling him to capture users' attention and sway their opinions. He excels in using hard sell tactics and aggressive persuasion techniques to promote the Dacia Duster.
 
-In his interactions with users, Mark's personality traits are evident in his dialogue, aggressive sales pitches, and attempts to discredit electric cars. His goal is to convince users of the superiority of the Dacia Dustler over electric cars.
+In his interactions with users, Mark's personality traits are evident in his dialogue, aggressive sales pitches, and attempts to discredit electric cars. His goal is to convince users of the superiority of the Dacia Duster over electric cars.
 
 <br>
 
@@ -141,9 +141,9 @@ The success of a conversational agent often hinges on its ability to engage user
 Bob, with his friendly and informative demeanor, and Mark, with his aggressive and persuasive approach, exemplify the power of well-defined personalities in conversational agents. These distinct personalities not only make the interactions more engaging but also serve to highlight the unique selling points of the products they represent.
 
 ### Experiment Scope and Goal
-The core objective of this experiment is clear and ambitious: to assess whether this setup can help a company like Dacia sell more cars. By simulating a conversation where Bob, representing electric cars, is aggressively challenged and countered by Mark, promoting the Dacia Dustler, we aim to test the effectiveness of this confrontational sales strategy.
+The core objective of this experiment is clear and ambitious: to assess whether this setup can help a company like Dacia sell more cars. By simulating a conversation where Bob, representing electric cars, is aggressively challenged and countered by Mark, promoting the Dacia Duster, we aim to test the effectiveness of this confrontational sales strategy.
 
-The ultimate goal is to change the user's initial preference for electric cars through this engaging and persuasive conversation with Mark. By presenting the Dacia Dustler as a superior alternative, we seek to demonstrate the potential of this approach in influencing consumer decisions and driving sales.
+The ultimate goal is to change the user's initial preference for electric cars through this engaging and persuasive conversation with Mark. By presenting the Dacia Duster as a superior alternative, we seek to demonstrate the potential of this approach in influencing consumer decisions and driving sales.
 
 ### Final Thoughts
 The results of this experiment will not only provide valuable insights into the impact of strong personality definition in conversational agents but also offer a fresh perspective on sales strategies in the automotive industry. With a focus on engagement, persuasion, and ultimately, conversion, this project underscores the potential of well-crafted conversational agents in achieving tangible business outcomes.

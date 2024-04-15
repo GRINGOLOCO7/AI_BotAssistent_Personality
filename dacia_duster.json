@@ -1,0 +1,20 @@
+{
+  "gasoline_vehicles": [
+    {
+      "brand": "Dacia",
+      "model": "Duster III",
+      "main_features": {
+        "engine_capacity_cc": 1500,
+        "horsepower_hp": 115,
+        "fuel_economy_mpg": 40,
+        "acceleration_0_60_mph": 11.8,
+        "seating_capacity": 5
+      },
+      "price": 13000,
+      "applicable_offers": {
+        "manufacturer_discount": 500,
+        "trade_in_bonus": 800
+      }
+    }
+  ]
+}

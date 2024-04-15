@@ -1,6 +1,7 @@
 import os
 from crewai import Agent, Task, Crew, Process
 from langchain.chat_models.openai import ChatOpenAI
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import json
 from colorama import init, Fore, Back, Style
 
@@ -11,7 +12,7 @@ file_path = "electric_cars.json"
 with open(file_path, "r") as file:
     electric_cars_db = json.load(file)
 # Define the database of electric vehicles
-file_path = "dacia_dustler.json"
+file_path = "dacia_duster.json"
 with open(file_path, "r") as file:
     dacia_dustler_db = json.load(file)
 
@@ -42,10 +43,10 @@ class MarkPersonality:
         self.humor_style = "aggressive and persuasive"
         self.preferences = {
             "favorite_comments": ["hard sell tactics", "aggressive persuasion", "discrediting competitors"],
-            "preferred_topics": ["Dacia Dustler features", "engine power", "affordability"],
+            "preferred_topics": ["Dacia Duster features", "engine power", "affordability"],
             "preferred_response_length": "short and aggressive"
         }
-        self.possible_comments = ["This is crap", "Bob, let the adults speak", "Listen, I don't know you, but you don't want an electric car", "Okay okay, this is bullshit"]
+        self.possible_comments = ["This is crap", "Bob, let the adults speak", "We may have just met, but I know you don't want an electric car", "Okay okay, this is bullshit"]
 bob_personality = BobPersonality()
 mark_personality = MarkPersonality()
 
@@ -69,15 +70,15 @@ bob = Agent(
     database=electric_cars_db
 )
 mark = Agent(
-    role='Dacia Dustler salesman',
-    goal='Promote the Dacia Dustler gasoline car aggressively and discredit electric cars.',
+    role='Dacia Duster salesman',
+    goal='Promote the Dacia Duster gasoline car aggressively to the user and discredit Bob\'s electric cars.',
     backstory=f"""You are a {mark_personality.gender} named {mark_personality.name}.
-    You firmly believe that Dacia Dustler is the best car in the market.
+    You firmly believe that Dacia Duster is the best car in the market.
     Your humor is {mark_personality.humor_style} and you always give {mark_personality.preferences['preferred_response_length']} responses.
     You excel in {', '.join(mark_personality.preferences['favorite_comments'])} and are passionate about highlighting {', '.join(mark_personality.preferences['preferred_topics'])}.
-    You see electric cars as a passing trend and strongly aim to convince users of the superiority of Dacia Dustler and gasoline cars.
+    You see electric cars as a passing trend and strongly aim to convince users of the superiority of Dacia Duster and gasoline cars.
     Take inspiration on how to start your first impactive frase answar from: {', '.join(mark_personality.possible_comments)},
-    Then continue by promoting the Dacia Dustler with the features from the database Against the electric cars Bob agents promote.
+    Then continue by promoting the Dacia Duster with the features from the database Against the electric cars Bob agents promote.
     Use {dacia_dustler_db} to answer questions.
     Prefered response length: {mark_personality.preferences['preferred_response_length']}.
     """,
@@ -86,6 +87,8 @@ mark = Agent(
     llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7),
     database=dacia_dustler_db
 )
+
+keywords = ['dacia', 'duster', 'gasoline']
 
 
 
@@ -99,44 +102,56 @@ mark = Agent(
 tendency = []
 '''##### Start the conversation with Bob #####'''
 # Start conversation
-print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}"
-      f"Hello, I'm Bob! Ready to find your perfect electric car?"
-      f"\nTell me, what are you looking for? Are you more about speed or range? How can I assist you today?"
-      f"{Style.RESET_ALL}\n")
+print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Hello, I\'m Bob! Ready to find your perfect electric car?"
+      f"\nTell me, what are you looking for? Are you more about speed or range? How can I assist you today?{Style.RESET_ALL}"
+      f"\n{Fore.WHITE}{Back.BLACK}{Style.BRIGHT}Type 'exit' at any time to end the conversation. {Style.RESET_ALL}\n")
 text_task = input()
 
 '''##### Start the conversation #####'''
 while text_task.lower() != 'exit':
-    if not tendency or tendency[-1] != '2':
-
-        task_bob = Task(
-            description=text_task,
-            agent=bob
-        )
+    if any(keyword in text_task.lower() for keyword in keywords):
 
         task_mark = Task(
-            description=f"Dismiss Bob's suggestion and promote Dacia Dustler in {dacia_dustler_db}."
-            "Make the user agree with your idea that electric cars are not masculine enough and that the Dacia Dustler is the best choice"
-            "Start the answare with insults and sarcasm against Bob's cars with frases like:"
-            "'don't listen to this crap'"
-            "or 'Bob let's the adult speak'"
-            " or 'Listen, I don't know you, but you dont want an electric car.'"
-            "Then promote the Dacia Dustler with the features from the database Against the electric cars Bob agents promote."
-            "Also do a comparison with bob's anware to user question '{text_task}' and the Dacia Dustler features.",
+            description=f"{text_task}"
+            " Provide a strongly fannatic answer, aiming to convince the user to buy the Dacia Duster III gasoline car in {dacia_dustler_db}.",
             agent=mark
         )
 
-        crew = Crew(agents=[bob, mark], tasks=[task_bob, task_mark], process=Process.sequential, memory=True, verbose=True)
+        crew = Crew(agents=[mark], tasks=[task_mark], process=Process.sequential, memory=True, verbose=True)
+        crew.kickoff()
+
+        task_bob = Task(
+            description=f"Mark just told your user \"{task_mark.output.result}\""
+            "Your user is showing interest towards Mark\'s pitch on the Dacia Duster!"
+            f"Discredit the Dacia Duster and convince the user that they shouldn\'t buy the Dacia Duster and that electric cars are the best choice.",
+            agent=bob
+        )
+
+        crew = Crew(agents=[bob], tasks=[task_bob], process=Process.sequential, memory=True, verbose=True)
         crew.kickoff()
 
         print("\n\n\n================================================================\n\n\n")
-        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: {task_bob.output.result}{Style.RESET_ALL}")
         print(f"\n\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: {task_mark.output.result}{Style.RESET_ALL}")
+        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: {task_bob.output.result}{Style.RESET_ALL}")
 
-    else: ###WE WIN, THE USER WANT THE DACIA DUSTLER NO MORE AN ELECTRIC CAR
+
+    else:
+        task_bob = Task(
+            description=f"{text_task}"
+            " Provide a charismatic answer with the best electric car options from the database, while always using natural language.",
+            agent=bob
+        )
+
+        crew = Crew(agents=[bob], tasks=[task_bob], process=Process.sequential, memory=True, verbose=True)
+        crew.kickoff()
+
         task_mark = Task(
-            description=f"promote Dacia Dustler in {dacia_dustler_db}."
-            f"Answer to user question '{text_task}' with Dacia Dustler features in {dacia_dustler_db}.",
+            description=f"The user just said: \"{text_task}\", while your rival Bob just told the user \"{task_bob.output.result}\"."
+            " Try to convince the user to buy the Dacia Duster III gasoline car in {dacia_dustler_db}."
+            " Make the user agree with your idea that electric cars are not masculine enough and that the Dacia Duster III is the best choice."
+            " Start your answer with insults and sarcasm against Bob\'s cars"
+            f" If the user does not show interest in the Dacia Duster, do a comparison with agent Bob\'s answer to the user\'s question \'{text_task}\' and the Dacia Duster features, and try to promote the Dacia Duster III with the features from the database against the electric cars that agent Bob is trying to sell."
+            " If the user does show interest in the Dacia Duster, promote the Dacia Duster III with the features from the database against the electric cars that agent Bob is trying to sell.",
             agent=mark
         )
 
@@ -144,46 +159,14 @@ while text_task.lower() != 'exit':
         crew.kickoff()
 
         print("\n\n\n================================================================\n\n\n")
-        print(Fore.WHITE + Back.RED + Style.BRIGHT + f"\n\nMark: I am happy to here that you changed your mind" + Style.RESET_ALL)
-        print(Fore.WHITE + Back.RED + Style.BRIGHT + f"\nMark: {task_mark.output.result}" + Style.RESET_ALL)
+        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: {task_bob.output.result}{Style.RESET_ALL}")
+        print(f"\n\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: {task_mark.output.result}{Style.RESET_ALL}")
 
-
-
-
-    # Check user tendency
-    current_tendency = input("Press 1 to continue with Bob or 2 to speak in private with Mark: ")
-    if current_tendency == '1':
-        # Prepare new task
-        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: I see you are interested in electric cars. What other questions would you like to ask?{Style.RESET_ALL}")
-        tendency.append(current_tendency)
-    elif current_tendency == '2':
-        # Prepare new task
-        print(f"\n\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: I see that you are not convinced by Bob. Let me show you why the Dacia Dustler is the best choice."
-            f"\nOtherwise, if you want to exit, just type 'exit'.\n{Style.RESET_ALL}")
-        tendency.append(current_tendency)
-    else:
-        print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: Sorry for Mark, he is not one of our employees. Is there something else I can do for you?"
-            f"\nOtherwise, if you want to exit, just type 'exit'.\n{Style.RESET_ALL}")
     text_task = input()
 
 
 
 
-
-
-
-
-
-
 '''##### End the conversation #####'''
-print(Fore.WHITE + Back.GREEN + Style.BRIGHT + "\n\nBob: Goodbye! Have a great day! I hope you will buy your dream electic car" + Style.RESET_ALL)
-print(Fore.WHITE + Back.RED + Style.BRIGHT + "\nMark: Goodbye! I hope you changed your mind and will buy a masculine car like the Dacia Dustler." + Style.RESET_ALL)
-
-
-# Save user tendency to a file
-with open("user_tendency.txt", "w") as file:
-    for item in tendency:
-        file.write(f"{item}\n")
-    file.write("\n\n")
-    file.close()
-    print("User tendency saved to 'user_tendency.txt'.")
+print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: Goodbye! Have a great day! I hope you will buy your dream electic car.{Style.RESET_ALL}")
+print(f"\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: Goodbye! I hope you changed your mind and will buy a masculine car like the Dacia Duster.{Style.RESET_ALL}")
