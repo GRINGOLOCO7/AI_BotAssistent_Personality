@@ -2,7 +2,7 @@
 Building a dual-agent chatbot using the CrewAI library: Bob, the friendly guide assisting users in finding their ideal electric car, and Mark, the assertive and stereotypically masculine Dacia Duster advocate. The objective is to explore whether users initially interested in a broad range of electric cars will be persuaded by Mark's straightforward pitches to ultimately choose the Dacia Duster.
 
 
-By [Gregorio Orlando](https://github.com/GRINGOLOCO7), [Tomás Mesalles](https://github.com/Torkuno), and Daniel Mora
+By [Gregorio Orlando](https://github.com/GRINGOLOCO7), [Tomás Mesalles](https://github.com/Torkuno), and [Daniel Mora](https://github.com/daMS2005)
 
 <div style="text-align:center;">
     <img src="Images_for_readme/electric_vs_combustion.jpeg" alt="competition" width="400">
