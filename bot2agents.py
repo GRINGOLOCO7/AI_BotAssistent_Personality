@@ -87,7 +87,7 @@ mark = Agent(
     database=dacia_dustler_db
 )
 
-keywords = ['dacia', 'duster', 'gasoline']
+keywords = ['dacia', 'duster', 'gasoline', 'idk', 'Mark', 'unsure', 'scare']
 
 
 
