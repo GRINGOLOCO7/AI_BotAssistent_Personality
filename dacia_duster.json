@@ -2,7 +2,7 @@
   "gasoline_vehicles": [
     {
       "brand": "Dacia",
-      "model": "Duster III",
+      "model": "Duster",
       "main_features": {
         "engine_capacity_cc": 1500,
         "horsepower_hp": 115,

@@ -161,6 +161,7 @@ while text_task.lower() != 'exit':
         print(f"\n\n{Fore.WHITE}{Back.GREEN}{Style.BRIGHT}Bob: {task_bob.output.result}{Style.RESET_ALL}")
         print(f"\n\n{Fore.WHITE}{Back.RED}{Style.BRIGHT}Mark: {task_mark.output.result}{Style.RESET_ALL}")
 
+    print('\n\n\n')
     text_task = input()
 
 
